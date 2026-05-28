@@ -186,6 +186,7 @@ def process_concur_data(csv_file, company, source):
     return records
 
 def handle_ingestion(csv_file, company, source_type, source):
+    csv_file.seek(0)
     if source_type == 'SAP':
         return process_sap_data(csv_file, company, source)
     elif source_type == 'UTILITY':
