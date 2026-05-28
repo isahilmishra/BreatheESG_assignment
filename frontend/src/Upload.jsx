@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from './api';
 import { UploadCloud, FileType, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
@@ -38,7 +38,7 @@ export default function Upload() {
     formData.append('source_type', sourceType);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/ingest/upload/', formData, {
+      const response = await api.post('/api/ingest/upload/', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       toast.success(response.data.message);

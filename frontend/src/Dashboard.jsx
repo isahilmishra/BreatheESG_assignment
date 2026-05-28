@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from './api';
 import { Check, X, AlertCircle, Filter, FileText, Activity, Loader2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
@@ -14,9 +14,9 @@ export default function Dashboard() {
   const fetchRecords = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:8000/api/esg-records/?status=${filter}`);
+      const res = await api.get(`/api/esg-records/?status=${filter}`);
       setRecords(res.data);
-      const statsRes = await axios.get(`http://localhost:8000/api/esg-records/stats/`);
+      const statsRes = await api.get(`/api/esg-records/stats/`);
       setStats(statsRes.data);
     } catch (err) {
       toast.error("Failed to fetch records.");
@@ -31,7 +31,7 @@ export default function Dashboard() {
 
   const handleApprove = async (id) => {
     try {
-      await axios.post(`http://localhost:8000/api/esg-records/${id}/approve/`);
+      await api.post(`/api/esg-records/${id}/approve/`);
       toast.success("Record approved and locked for audit.");
       fetchRecords();
     } catch (err) {
@@ -43,7 +43,7 @@ export default function Dashboard() {
     const notes = prompt("Reason for flagging:");
     if (notes === null) return;
     try {
-      await axios.post(`http://localhost:8000/api/esg-records/${id}/flag/`, { notes });
+      await api.post(`/api/esg-records/${id}/flag/`, { notes });
       toast.success("Record flagged for review.");
       fetchRecords();
     } catch (err) {
