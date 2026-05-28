@@ -2,8 +2,8 @@
 
 > A full-stack prototype for ingesting, normalizing, and auditing heterogeneous ESG data sources built for Breathe ESG.
 
-![Live Demo](https://img.shields.io/badge/Live_Demo-Frontend-blue?style=for-the-badge&logo=react) [https://esg-frontend-ii0c.onrender.com/](https://esg-frontend-ii0c.onrender.com/)  
-![Live Backend](https://img.shields.io/badge/Live_Backend-Django_REST-green?style=for-the-badge&logo=django) [https://esg-backend-hqpz.onrender.com](https://esg-backend-hqpz.onrender.com)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Frontend-blue?style=for-the-badge&logo=react)](https://esg-frontend-ii0c.onrender.com/)
+[![Live Backend](https://img.shields.io/badge/Live_Backend-Django_REST-green?style=for-the-badge&logo=django)](https://esg-backend-hqpz.onrender.com)
 
 ## 📌 Project Overview
 Breathe ESG ingests emissions and activity data from client companies, but every client’s data lives somewhere different and in a different shape. This prototype solves the problem of unstructured, messy data by providing a robust ingestion engine and an analyst review dashboard. 
