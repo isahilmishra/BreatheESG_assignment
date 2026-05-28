@@ -38,9 +38,7 @@ export default function Upload() {
     formData.append('source_type', sourceType);
 
     try {
-      const response = await api.post('/api/ingest/upload/', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      const response = await api.post('/api/ingest/upload/', formData);
       toast.success(response.data.message);
       setFile(null);
     } catch (err) {
