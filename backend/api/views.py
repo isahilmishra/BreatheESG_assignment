@@ -89,10 +89,11 @@ class IngestionViewSet(viewsets.ViewSet):
             company_id = serializer.validated_data['company_id']
             source_type = serializer.validated_data['source_type']
             
-            try:
-                company = Company.objects.get(id=company_id)
-            except Company.DoesNotExist:
-                return Response({"error": "Company not found"}, status=status.HTTP_404_NOT_FOUND)
+            # Get or create company to ensure upload works on unseeded DB deployments
+            company, _ = Company.objects.get_or_create(
+                id=company_id,
+                defaults={'name': 'Acme ESG Corporation'}
+            )
                 
             # Create or get source
             source, _ = DataSource.objects.get_or_create(
